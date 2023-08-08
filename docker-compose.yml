@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  msa-web:
+    container_name: score-badmintonpins
+    build: .
+    image: score-badmintonpins
+    ports:
+      - "8090:80"
+    volumes:
+      - .:/var/www/html
