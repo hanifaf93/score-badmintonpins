@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>BADMINTON SCORE</title>
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+   <div class="flex lg:mt-16 mt-10 mx-auto justify-center max-w-full">
+      <h1 class="text-5xl font-extrabold">
+         <span class="text-slate-500">SCORE</span>
+         <span class="text-amber-500">BADMINTON</span>
+      </h1>
+   </div>
+
+   <div class="flex mt-10 mx-auto justify-center max-w-full">
+      <button id="decreaseButton1" class="px-3 py-2 rounded-lg bg-red-500 text-lg font-bold text-slate-100">-</button>
+      <button id="resetButton"
+         class="mx-16 px-3 py-2 rounded-full bg-cyan-500 text-lg font-bold text-slate-100">RESET</button>
+      <button id="decreaseButton2"
+         class="px-3 py-2 rounded-lg bg-red-500 text-lg font-extrabold text-slate-100">-</button>
+   </div>
+
+   <div class="flex mt-10 mx-auto justify-center max-w-full space-x-4">
+      <button id="buttonNondir" class="rounded-md bg-zinc-600 text-white font-semibold px-3 py-2">
+         NON DIREKTORAT
+      </button>
+      <button id="buttonSales" class="rounded-md bg-zinc-600 text-white font-semibold px-3 py-2">
+         SALES
+      </button>
+      <button id="buttonOperation" class="rounded-md bg-zinc-600 text-white font-semibold px-3 py-2">
+         OPERATION
+      </button>
+      <button id="buttonFinance" class="rounded-md bg-zinc-600 text-white font-semibold px-3 py-2">
+         FINANCE & RISK MANAGEMENT
+      </button>
+   </div>
+
+   <div class="flex items-center justify-center h-full my-auto max-w-7xl p-5">
+      <div>
+         <button id="buttonScoreOne" class="text-[200px] font-extrabold">
+            <span id="score1">0</span>
+         </button>
+      </div>
+      <div class="mx-10">
+         <h1 class="text-[200px] font-extrabold">:</h1>
+      </div>
+      <div>
+         <button id="buttonScoreTwo" class="text-[200px] font-extrabold">
+            <span id="score2">0</span>
+         </button>
+      </div>
+   </div>
+
+   <div class="flex items-center justify-center h-full my-auto max-w-7xl p-5">
+      <div>
+         <h1 class="text-2xl text-center font-bold">
+            DIREKTORAT
+            <span id="dir1" class="block px-2 bg-blue-500 text-white rounded-lg">
+
+            </span>
+         </h1>
+      </div>
+      <div class="mx-20">
+         <h1 class="text-2xl font-bold">
+            VS
+         </h1>
+      </div>
+      <div>
+         <h1 class="text-2xl text-center font-bold">
+            DIREKTORAT
+            <span id="dir2" class="block px-2 bg-green-500 text-white rounded-lg">
+
+            </span>
+         </h1>
+      </div>
+   </div>
+
+   <script>
+      let scoreOne = document.getElementById('buttonScoreOne');
+      let countScoreOne = 0;
+
+      let scoreTwo = document.getElementById('buttonScoreTwo');
+      let countScoreTwo = 0;
+
+      scoreOne.addEventListener("click", function () {
+         countScoreOne += 1;
+
+         let temp = document.getElementById('score1');
+         temp.innerHTML = countScoreOne;
+      });
+
+      scoreTwo.addEventListener("click", function () {
+         countScoreTwo += 1;
+
+         let temp = document.getElementById('score2');
+         temp.innerHTML = countScoreTwo;
+      });
+
+      const resetButton = document.getElementById('resetButton');
+
+      resetButton.addEventListener('click', () => {
+         let temp = document.getElementById('score1');
+         let temp2 = document.getElementById('score2');
+         countScoreOne = 0;
+         countScoreTwo = 0;
+         temp.innerHTML = 0;
+         temp2.innerHTML = 0;
+         document.getElementById('dir1').innerHTML = "\n\n            ";
+         document.getElementById('dir2').innerHTML = "\n\n            ";
+
+      })
+
+      const decreaseButton1 = document.getElementById('decreaseButton1');
+
+      decreaseButton1.addEventListener('click', () => {
+         let temp = document.getElementById('score1');
+         temp.innerHTML -= 1;
+      })
+
+      const decreaseButton2 = document.getElementById('decreaseButton2');
+
+      decreaseButton2.addEventListener('click', () => {
+         let temp = document.getElementById('score2');
+         temp.innerHTML -= 1;
+      })
+
+      const nondir = 'NON DIREKTORAT';
+      const sales = 'SALES';
+      const operation = 'OPERATION';
+      const frm = 'FINANCE & RISK MANAGEMENT';
+
+      // const buttonNondir = getElementById('buttonNondir');
+      // const buttonSales = getElementById('buttonSales');
+      // const buttonOperation = getElementById('button');
+      // const buttonFinance = getElementById('buttonNondir');
+
+      buttonNondir.addEventListener('click', () => {
+         let is_true = true;
+
+         if (document.getElementById('dir1').innerHTML == "\n\n            ") {
+            is_true = false;
+            let temp = document.getElementById('dir1');
+            temp.innerHTML = nondir;
+         }
+
+         if (document.getElementById('dir2').innerHTML == "\n\n            " && is_true) {
+            let temp = document.getElementById('dir2');
+            temp.innerHTML = nondir;
+         }
+      })
+
+      buttonSales.addEventListener('click', () => {
+         let is_true = true;
+         if (document.getElementById('dir1').innerHTML == "\n\n            ") {
+            is_true = false;
+            let temp = document.getElementById('dir1');
+            temp.innerHTML = sales;
+         }
+
+         if (document.getElementById('dir2').innerHTML == "\n\n            " && is_true) {
+            let temp = document.getElementById('dir2');
+            temp.innerHTML = sales;
+         }
+      })
+
+      buttonOperation.addEventListener('click', () => {
+         let is_true = true;
+         if (document.getElementById('dir1').innerHTML == "\n\n            ") {
+            is_true = false;
+            let temp = document.getElementById('dir1');
+            temp.innerHTML = operation;
+         }
+
+         if (document.getElementById('dir2').innerHTML == "\n\n            " && is_true) {
+            let temp = document.getElementById('dir2');
+            temp.innerHTML = operation;
+         }
+      })
+
+      buttonFinance.addEventListener('click', () => {
+
+         let is_true = true;
+         if (document.getElementById('dir1').innerHTML == "\n\n            ") {
+            is_true = false;
+            let temp = document.getElementById('dir1');
+            temp.innerHTML = frm;
+         }
+
+         if (document.getElementById('dir2').innerHTML == "\n\n            " && is_true) {
+            let temp = document.getElementById('dir2');
+            temp.innerHTML = frm;
+         }
+      })
+
+   </script>
+</body>
+
+</html>
